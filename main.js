@@ -17,7 +17,8 @@ console.log(numberRandom); // Borrar
 var numberRandom = 50;
 
 
-// Comparar el número del usuario y el número aleotorio y lanzar mensajes
+// Comparar el número del usuario y el número aleotorio y lanzar mensajes ..Y...
+// Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
 
 var numberUserAsString = '50'; // Vendría por el input
 var numberUser = parseInt(numberUserAsString);
@@ -26,18 +27,26 @@ var messageToUser = document.querySelector('#message-to-user');
 
 if (numberUser === numberRandom) {
   messageToUser.innerHTML = ('¡Acertaste!');
+  // Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
+  var containerInputName = document.querySelector('#container-input-name');
+  containerInputName.classList.remove('display-none');
 } else if (numberUser > numberRandom) {
   messageToUser.innerHTML = 'Demasiado alto';
 } else {
   messageToUser.innerHTML = 'Demasiado bajo';
 }
 
-// Actualizar el contador --> Hacerlo con eventos
+// Actualizar el contador --> Hacerlo cuando me enseñen eventos
 
+// Almacenar el nombre del jugador y el número de intentos en una estructura de datos
 
-// cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
+//Provisional:
+var nameUser = 'Ana';
+var attempts = 0;
 
-if (numberUser === numberRandom) {
-  var containerInputName = document.querySelector('#container-input-name');
-  containerInputName.classList.remove('display-none');
-}
+var historic = {
+  nameUser: nameUser,
+  attempts: attempts
+};
+
+console.log(historic);
