@@ -3,6 +3,8 @@
 
 // Número aleatorio
 
+/*
+
 function getRandomInt(min, max) {
     return Math.ceil(Math.random() * (max - min)) + min;
 }
@@ -10,7 +12,9 @@ function getRandomInt(min, max) {
 var numberRandom = getRandomInt(1,100);
 console.log(numberRandom); // Borrar
 
+*/
 
+var numberRandom = 50;
 
 
 // Comparar el número del usuario y el número aleotorio y lanzar mensajes
@@ -28,19 +32,12 @@ if (numberUser === numberRandom) {
   messageToUser.innerHTML = 'Demasiado bajo';
 }
 
+// Actualizar el contador --> Hacerlo con eventos
 
 
+// cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
 
-
-
-/*
-var firstName = prompt('como te llamas?');
-if (firstName == 'Ana' || firstName =='Gemma') {
-    alert('Hola bellas');
-
-} else {
-  alert('fuera!')
-
+if (numberUser === numberRandom) {
+  var containerInputName = document.querySelector('#container-input-name');
+  containerInputName.classList.remove('display-none');
 }
-
-*/
