@@ -39,10 +39,12 @@ if (numberUser === numberRandom) {
 // Actualizar el contador --> Hacerlo cuando me enseñen eventos
 
 // Almacenar el nombre del jugador y el número de intentos en una estructura de datos
+//Provisional
 
-//Provisional:
 var nameUser = 'Ana';
-var attempts = 0;
+var attemptsAsString = '1';
+var attempts = parseInt(attemptsAsString);
+
 
 var historic = {
   nameUser: nameUser,
@@ -50,3 +52,11 @@ var historic = {
 };
 
 console.log(historic);
+
+
+// Una vez guardado en el histórico, automáticamente la sección de histórico se repinta para mostrar los nuevos datos
+
+if (historic.attempts > 0) {
+  var listHistoric = document.querySelector('#historic');
+  listHistoric.innerHTML = listHistoric.innerHTML + '<li>' + historic.nameUser + ' - ' + historic.attempts + ' intento/s';
+}
