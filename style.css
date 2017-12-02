@@ -6,4 +6,87 @@ body {
   font-family: font-family: 'Roboto', sans-serif;
   font-weight: 300;
   background-color: #E6EBF5;
+  margin: 0;
+  font-size: 14px;
+}
+
+.title-big {
+  font-size: 20px;
+  margin: 32px 0px 60px 0px;
+}
+
+.display-none {
+  display: none;
+}
+
+.center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button {
+  border-radius: 3px;
+  text-decoration: none;
+  text-align: center;
+  width: 100px;
+  background-color: white;
+  border: solid 1px #BABDBF;
+  margin-top: 20px;
+  margin-bottom: 55px;
+}
+
+.italic {
+  font-style: italic;
+}
+/* Section Adivina */
+
+.container-main {
+  border-bottom: solid 0.5px grey; /* Borrar */
+  width: 100%;
+  text-align: center;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.inputs {
+  border-radius: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-decoration: none;
+  appearance: none;
+  border-width: 0;
+  height: 22px;
+}
+
+.message-clue {
+  color: blue;
+  border: solid 1px blue;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.attempts {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  color: red;
+  font-size: 32px;
+}
+
+/* Section Histórico */
+
+.container-historic {
+
+}
+
+.tittle-medium {
+  font-size: 17px;
+  margin-left: 32px;
+  margin-top: 32px;
+}
+
+.list-historic {
+  padding-left: 80px;
 }
