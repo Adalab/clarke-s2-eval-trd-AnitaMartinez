@@ -39,14 +39,23 @@ body {
 .italic {
   font-style: italic;
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
 /* Section Adivina */
 
-.container-main {
-  border-bottom: solid 0.5px grey; /* Borrar */
+.container-game {
+  border-bottom: solid 0.5px grey;
   width: 100%;
   text-align: center;
   position: relative;
   padding-bottom: 24px;
+}
+
+.label {
+  display: none;
 }
 
 .inputs {
@@ -83,10 +92,40 @@ body {
 
 .tittle-medium {
   font-size: 17px;
-  margin-left: 32px;
-  margin-top: 32px;
+  padding-left: 10%;
+  padding-top: 32px;
 }
 
 .list-historic {
-  padding-left: 80px;
+  padding-left: 18%;
+}
+
+
+/* Media Queries */
+
+@media all and (min-width: 900px) {
+  .main-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container-game {
+    border-bottom: 0;
+    border-right: solid 0.5px grey;
+  }
+
+  .main-container {
+    width: 80%;
+  }
+
+  .tittle-medium {
+    padding-left: 40%;
+    padding-top: 32px;
+    margin-top: 0;
+  }
+
+  .list-historic {
+    padding-left: 75%; /* TODO --> Mirar por qué sucede esto */
+  }
+
 }
