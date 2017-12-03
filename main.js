@@ -1,42 +1,50 @@
 'use strict';
 
+/*
 
 // Número aleatorio
-
-/*
 
 function getRandomInt(min, max) {
     return Math.ceil(Math.random() * (max - min)) + min;
 }
 
 var numberRandom = getRandomInt(1,100);
-console.log(numberRandom); // Borrar
 
 */
 
-var numberRandom = 50;
-
-
-// Comparar el número del usuario y el número aleotorio y lanzar mensajes ..Y...
-// Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
+var numberRandom = 50;  // Borrar
+console.log(numberRandom); // Borrar
 
 var numberUserAsString = '50'; // Vendría por el input
 var numberUser = parseInt(numberUserAsString);
 
-var messageToUser = document.querySelector('#message-to-user');
+// Comparar el número del usuario y el número aleotorio y lanzar mensajes
 
-if (numberUser === numberRandom) {
-  messageToUser.innerHTML = ('¡Acertaste!');
-  // Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
-  var containerInputName = document.querySelector('#container-input-name');
-  containerInputName.classList.remove('display-none');
-} else if (numberUser > numberRandom) {
-  messageToUser.innerHTML = 'Demasiado alto';
-} else {
-  messageToUser.innerHTML = 'Demasiado bajo';
+function messagesGame(selector, condition1, condition2, messageWin, messageHigh, messageLow){
+  var messageToUser = document.querySelector(selector);
+  if (condition1 === condition2) {
+    messageToUser.innerHTML = (messageWin);
+  } else if (numberUser > numberRandom) {
+    messageToUser.innerHTML = messageHigh;
+  } else {
+    messageToUser.innerHTML = messageLow;
+  }
+};
+
+messagesGame('#message-to-user', numberUser, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo');
+
+// Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
+
+function removeClass(selector, condition1, condition2, nameClass) {
+  var elementSelector = document.querySelector(selector);
+  if (condition1 === condition2) {
+    elementSelector.classList.remove(nameClass);
+  }
 }
 
-// Actualizar el contador 
+removeClass('#container-input-name', numberUser, numberRandom,'display-none');
+
+// Actualizar el contador
 
 var tryButton = document.querySelector("#try-buttom");
 var acumulador = 0;
