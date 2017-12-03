@@ -36,19 +36,30 @@ if (numberUser === numberRandom) {
   messageToUser.innerHTML = 'Demasiado bajo';
 }
 
-// Actualizar el contador --> Hacerlo cuando me enseñen eventos
+// Actualizar el contador 
+
+var tryButton = document.querySelector("#try-buttom");
+var acumulador = 0;
+var attemps = document.querySelector('.attempts');
+
+tryButton.addEventListener("click",function(){
+  acumulador = acumulador + 1;
+  console.log(acumulador);
+  attemps.innerHTML = (acumulador);
+});
+
 
 // Almacenar el nombre del jugador y el número de intentos en una estructura de datos
 //Provisional
 
 var nameUser = 'Ana';
 var attemptsAsString = '1';
-var attempts = parseInt(attemptsAsString);
+var attempts1 = parseInt(attemptsAsString);
 
 
 var historic = {
   nameUser: nameUser,
-  attempts: attempts
+  attempts: attempts1
 };
 
 console.log(historic);
