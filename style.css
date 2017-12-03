@@ -10,6 +10,10 @@ body {
   font-size: 14px;
 }
 
+button:focus {
+  outline:0;
+}
+
 .title-big {
   font-size: 20px;
   margin: 32px 0px 60px 0px;
@@ -19,7 +23,6 @@ body {
 .display-none {
   display: none;
 }
-
 
 .center {
   display: block;
@@ -33,7 +36,6 @@ body {
   text-align: center;
   width: 100px;
   background-color: white;
-  border: solid 1px #BABDBF;
   margin-top: 20px;
 }
 

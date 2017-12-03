@@ -5,7 +5,7 @@
 // Número aleatorio
 
 function getRandomInt(min, max) {
-    return Math.ceil(Math.random() * (max - min)) + min;
+return Math.ceil(Math.random() * (max - min)) + min;
 }
 
 var numberRandom = getRandomInt(1,100);
@@ -46,36 +46,34 @@ removeClass('#container-input-name', numberUser, numberRandom,'display-none');
 
 // Actualizar el contador
 
-var tryButton = document.querySelector("#try-buttom");
-var acumulador = 0;
-var attemps = document.querySelector('.attempts');
 
-tryButton.addEventListener("click",function(){
-  acumulador = acumulador + 1;
-  console.log(acumulador);
-  attemps.innerHTML = (acumulador);
-});
+function saveAttemps() {
+  var attemps = document.querySelector('.attempts');
+  var tryButton = document.querySelector("#try-buttom");
+  var acumulador = 0;
 
+  tryButton.addEventListener("click",function(){
+    acumulador = acumulador + 1;
+    attemps.innerHTML = (acumulador);
 
-// Almacenar el nombre del jugador y el número de intentos en una estructura de datos
-//Provisional
+    //Guardar el número de intentos en la propiedad de un objeto
 
-var nameUser = 'Ana';
-var attemptsAsString = '1';
-var attempts1 = parseInt(attemptsAsString);
+      var acumuladorAttemps = parseInt(acumulador);
 
+      var historic = {
+        nameUser: 'Ana',
+        attempts: acumuladorAttemps
+      };
+      console.log(historic);
 
-var historic = {
-  nameUser: nameUser,
-  attempts: attempts1
+      // Una vez guardado en el histórico, automáticamente la sección de histórico se repinta para mostrar los nuevos datos
+
+      if (historic.attempts > 0) {   //Aquí tendría que hacer un for
+        var listHistoric = document.querySelector('#historic');
+        listHistoric.innerHTML = listHistoric.innerHTML + '<li>' + historic.nameUser + ' - ' + historic.attempts + ' intento/s';
+      }
+
+  });
 };
 
-console.log(historic);
-
-
-// Una vez guardado en el histórico, automáticamente la sección de histórico se repinta para mostrar los nuevos datos
-
-if (historic.attempts > 0) {
-  var listHistoric = document.querySelector('#historic');
-  listHistoric.innerHTML = listHistoric.innerHTML + '<li>' + historic.nameUser + ' - ' + historic.attempts + ' intento/s';
-}
+var contenidodelobjetoHistorico = saveAttemps();
