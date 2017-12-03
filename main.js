@@ -46,7 +46,6 @@ removeClass('#container-input-name', numberUser, numberRandom,'display-none');
 
 // Actualizar el contador
 
-
 function saveAttemps() {
   var attemps = document.querySelector('.attempts');
   var tryButton = document.querySelector("#try-buttom");
@@ -67,11 +66,10 @@ function saveAttemps() {
 
     // Que el histórico se pinte con el número de intentos cuando el usuario acierte
 
-    if (numberUser === numberRandom) {
-
+    if (numberUser === numberRandom) { //Esto NO iría así, si no cuando el usuario pulse el Guardar.
       var acumuladorDos = 0;
       var listHistoric = document.querySelector('#historic');
-      listHistoric.innerHTML = '<li>' + acumuladorAttemps + '</li>';
+      listHistoric.innerHTML = '<li>' + historic.nameUser + ' - ' + acumuladorAttemps + ' intentos' + '</li>';
     }
 
   });
