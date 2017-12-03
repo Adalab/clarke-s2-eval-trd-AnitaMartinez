@@ -18,7 +18,7 @@ console.log(numberRandom); // Borrar
 var numberUserAsString = '50'; // Vendría por el input
 var numberUser = parseInt(numberUserAsString);
 
-// Comparar el número del usuario y el número aleotorio y lanzar mensajes
+// Comparar el número del usuario y el número aleatorio y lanzar mensajes
 
 function messagesGame(selector, condition1, condition2, messageWin, messageHigh, messageLow){
   var messageToUser = document.querySelector(selector);
@@ -56,22 +56,23 @@ function saveAttemps() {
     acumulador = acumulador + 1;
     attemps.innerHTML = (acumulador);
 
-    //Guardar el número de intentos en la propiedad de un objeto
+    //Guardar el número de intentos en la propiedad de un objeto)
 
-      var acumuladorAttemps = parseInt(acumulador);
+    var acumuladorAttemps = parseInt(acumulador);
 
-      var historic = {
-        nameUser: 'Ana',
-        attempts: acumuladorAttemps
-      };
-      console.log(historic);
+    var historic = {
+      nameUser: 'Ana',
+      attempts: acumuladorAttemps
+    };
 
-      // Una vez guardado en el histórico, automáticamente la sección de histórico se repinta para mostrar los nuevos datos
+    // Que el histórico se pinte con el número de intentos cuando el usuario acierte
 
-      if (historic.attempts > 0) {   //Aquí tendría que hacer un for
-        var listHistoric = document.querySelector('#historic');
-        listHistoric.innerHTML = listHistoric.innerHTML + '<li>' + historic.nameUser + ' - ' + historic.attempts + ' intento/s';
-      }
+    if (numberUser === numberRandom) {
+
+      var acumuladorDos = 0;
+      var listHistoric = document.querySelector('#historic');
+      listHistoric.innerHTML = '<li>' + acumuladorAttemps + '</li>';
+    }
 
   });
 };
