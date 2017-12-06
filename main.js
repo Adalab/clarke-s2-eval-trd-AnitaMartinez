@@ -1,44 +1,42 @@
 'use strict';
 
-/*
 // Número aleatorio
+
 function getRandomInt(min, max) {
 return Math.ceil(Math.random() * (max - min)) + min;
 }
 var numberRandom = getRandomInt(1,100);
-*/
-var numberRandom = 50;  // Borrar
+console.log(numberRandom);
+
+// var numberRandom = 50;  -- Borrar
+
+//Cuando el usuario pulsa el botón de Prueba...
+  // Guardo el número que introduce
+  // Comparo el número del usuario y el número aleatorio y lanzo mensajes
 
 var tryButton = document.querySelector("#try-buttom");
+tryButton.addEventListener('click', ValueInput);
 
-tryButton.addEventListener('click', fun);
-
-function fun() {
+function ValueInput() {
   var inputUserNumber = document.querySelector("#inputUserNumber");
   var valueinputUserNumberAsString = inputUserNumber.value;
-  var valueinputUserNumber = parseInt(valueinputUserNumberAsString);
-  console.log(valueinputUserNumber);
+  var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
+  messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo'); //hago comparaciones y pinto mensajes
 }
-
-
-//var numberUserAsString = '50'; // Vendría por el input
-//var numberUser = parseInt(numberUserAsString);
-
-// Comparar el número del usuario y el número aleatorio y lanzar mensajes
 
 function messagesGame(selector, condition1, condition2, messageWin, messageHigh, messageLow){
   var messageToUser = document.querySelector(selector);
   if (condition1 === condition2) {
     messageToUser.innerHTML = (messageWin);
-  } else if (numberUser > numberRandom) {
+  } else if (condition1 > condition2) {
     messageToUser.innerHTML = messageHigh;
   } else {
     messageToUser.innerHTML = messageLow;
   }
 };
-/*
 
-messagesGame('#message-to-user', numberUser, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo');
+
+/*
 
 // Cuando el jugador acierte el número, aparece la caja de introducir nombre y el botón
 
