@@ -23,7 +23,7 @@ function ValueInput() {
   var valueinputUserNumberAsString = inputUserNumber.value;
   var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
   messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo'); //hago comparaciones y pinto mensajes
-  addAndPaint(); // actualizo el contador
+  addAndPaint(); //actualizo el contador
   removeClass('#container-input-name', valueinputUserNumber, numberRandom,'display-none'); //Si acierta, muesto la caja para guardar el nombre
 };
 
@@ -45,11 +45,11 @@ var acumulador = 0;
 
 function addAndPaint() {
   acumulador = acumulador + 1;
-  attemps.innerHTML = (acumulador);
+  attemps.innerHTML = acumulador;
+
 }
 
-//Función para que si el usuario acierta, aparezca la caja del escribe tu nombre
-
+//Función para que si el usuario acierta, aparezca la caja de escribe tu nombre
 function removeClass(selector, condition1, condition2, nameClass) {
   var elementSelector = document.querySelector(selector);
   if (condition1 === condition2) {
@@ -58,20 +58,36 @@ function removeClass(selector, condition1, condition2, nameClass) {
 }
 
 
+//Cuando el usuario pulsa el botón de guardar...
+  //Guardamos el nombre y el número de intentos en un objeto
+
+
+var saveNameButtom = document.querySelector("#saveName-buttom");
+
+saveNameButtom.addEventListener('click', fun);
+
+function fun() {
+  var inputUserName = document.querySelector("#input-user-name");
+  var valueinputUserName = inputUserName.value; //Guardo el value del input
+  var nameAndAttemps = {
+    nameUser: valueinputUserName,
+    attemps: acumulador
+    }
+  console.log(nameAndAttemps);
+};
+
+
+
+
+
+
+
+
 
 
 
 /*
 
-
-    //Guardar el número de intentos en la propiedad de un objeto)
-
-    var acumuladorAttemps = parseInt(acumulador);
-
-    var historic = {
-      nameUser: 'Ana',
-      attempts: acumuladorAttemps
-    };
 
     // Que el histórico se pinte con el número de intentos cuando el usuario acierte
 
