@@ -1,22 +1,28 @@
 'use strict';
 
 /*
-
 // Número aleatorio
-
 function getRandomInt(min, max) {
 return Math.ceil(Math.random() * (max - min)) + min;
 }
-
 var numberRandom = getRandomInt(1,100);
-
 */
-
 var numberRandom = 50;  // Borrar
-console.log(numberRandom); // Borrar
 
-var numberUserAsString = '50'; // Vendría por el input
-var numberUser = parseInt(numberUserAsString);
+var tryButton = document.querySelector("#try-buttom");
+
+tryButton.addEventListener('click', fun);
+
+function fun() {
+  var inputUserNumber = document.querySelector("#inputUserNumber");
+  var valueinputUserNumberAsString = inputUserNumber.value;
+  var valueinputUserNumber = parseInt(valueinputUserNumberAsString);
+  console.log(valueinputUserNumber);
+}
+
+
+//var numberUserAsString = '50'; // Vendría por el input
+//var numberUser = parseInt(numberUserAsString);
 
 // Comparar el número del usuario y el número aleatorio y lanzar mensajes
 
@@ -30,6 +36,7 @@ function messagesGame(selector, condition1, condition2, messageWin, messageHigh,
     messageToUser.innerHTML = messageLow;
   }
 };
+/*
 
 messagesGame('#message-to-user', numberUser, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo');
 
@@ -44,14 +51,21 @@ function removeClass(selector, condition1, condition2, nameClass) {
 
 removeClass('#container-input-name', numberUser, numberRandom,'display-none');
 
+*/
+
 // Actualizar el contador
+
+/*
 
 function saveAttemps() {
   var attemps = document.querySelector('.attempts');
-  var tryButton = document.querySelector("#try-buttom");
   var acumulador = 0;
 
   tryButton.addEventListener("click",function(){
+
+    var value = document.querySelector("#inputUserNumber").value;  // Aquí recojo el valor del input numberUser
+    console.log(value);
+
     acumulador = acumulador + 1;
     attemps.innerHTML = (acumulador);
 
@@ -76,3 +90,5 @@ function saveAttemps() {
 };
 
 var contenidodelobjetoHistorico = saveAttemps();
+
+*/
