@@ -8,7 +8,7 @@ function getRandomInt(min, max) {
   return Math.ceil(Math.random() * (max - min)) + min;
 }
 var numberRandom = getRandomInt(1,100);
-console.log(numberRandom);
+console.log( 'Número aleatorio es ' + numberRandom);
 
 
 //Cuando el usuario pulsa el botón de Prueba...
@@ -60,37 +60,33 @@ function removeClass(selector, condition1, condition2, nameClass) {
 
 
 //Cuando el usuario pulsa el botón de guardar...
-//Guardamos el nombre y el número de intentos en un objeto
-//Pintamos el histórico con los datos del objeto
-//Desaparece la caja de escribe tu nombre
+  //Guardamos el nombre y el número de intentos en un objeto
+  //Pintamos el histórico con los datos del objeto
+  //Desaparece la caja de escribe tu nombre
+  //Genero un nuevo número aleatorio
 
 var saveNameButtom = document.querySelector("#saveName-buttom");
 var historic = document.querySelector("#historic");
-
-
 saveNameButtom.addEventListener('click', operationsInputName);
 
 function operationsInputName() {
   var inputUserName = document.querySelector("#input-user-name");
   var valueinputUserName = inputUserName.value; //Guardo el value del input
-
   var nameAndAttems =
   {
     nameUser: valueinputUserName,
     attemps: acumulador
   };
 
-  var rounds = [
-    nameAndAttems
-  ];
-
-  for (var i = 0; i < rounds.length; i++) {
-    historic.innerHTML += '<li>' + rounds[0].nameUser + ' - ' + rounds[0].attemps + ' intentos' + '</li>'; //Pinto el histórico
-
-  }
-
+  historic.innerHTML += '<li>' + nameAndAttems.nameUser + ' - ' + nameAndAttems.attemps + ' intentos' + '</li>'; //Pinto el nombre y el número de intentos en el histórico
 
   addClass('#container-input-name','display-none'); //Desaparece la caja de escribe tu nombre
+
+  function newRandom (min, max) {
+    return Math.ceil(Math.random() * (max - min)) + min;
+  }
+  numberRandom = newRandom(1,100);
+  console.log('Nuevo número aleatorio es ' + numberRandom); //Nuevo número aleatorio
 };
 
 //Función para que desaparezca la caja de escribe tu nombre
