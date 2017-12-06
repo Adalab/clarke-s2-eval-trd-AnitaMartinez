@@ -1,7 +1,16 @@
 'use strict';
 
+// Variables globales
+
+var inputUserNumber = document.querySelector("#input-user-number");
+var inputUserName = document.querySelector("#input-user-name");
+var tryButton = document.querySelector("#try-buttom");
+var saveNameButtom = document.querySelector("#saveName-buttom");
+var attemps = document.querySelector('.attempts');
+var historic = document.querySelector("#historic");
+var messageToUser = document.querySelector('#message-to-user');
+
 var acumulador = 0;
-var inputUserNumber = document.querySelector("#inputUserNumber");
 
 // Número aleatorio
 
@@ -9,8 +18,6 @@ function getRandomInt(min, max) {
   return Math.ceil(Math.random() * (max - min)) + min;
 }
 var numberRandom = getRandomInt(1,100);
-console.log( 'Número aleatorio es ' + numberRandom);
-
 
 //Cuando el usuario pulsa el botón de Prueba...
 // Guardo el número que introduce
@@ -18,22 +25,24 @@ console.log( 'Número aleatorio es ' + numberRandom);
 // Actualizo el contador
 //Si acierta, muestro el div con el botón de escribe tu nombre
 
-var tryButton = document.querySelector("#try-buttom");
 tryButton.addEventListener('click', operationsInputNumber);
 
 function operationsInputNumber() {
   var valueinputUserNumberAsString = inputUserNumber.value;
   var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
-  messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo'); //hago comparaciones y pinto mensajes
+
+  messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'<p>¡Acertaste!</p>', '<p>Demasiado alto</p>', '<p>Demasiado bajo</p>'); //hago comparaciones y pinto mensajes
+
   addAndPaint(); //actualizo el contador
-  removeClass('#container-input-name', valueinputUserNumber, numberRandom,'display-none'); //Si acierta, muesto la caja para guardar el nombre
+
+  removeClassInCase('#container-input-name', valueinputUserNumber, numberRandom,'display-none'); //Si acierta, muesto la caja para guardar el nombre
 };
 
 //Función para comparaciones entre aleatorio y el número del usuario y pinto mensaje
 function messagesGame(selector, condition1, condition2, messageWin, messageHigh, messageLow){
   var messageToUser = document.querySelector(selector);
   if (condition1 === condition2) {
-    messageToUser.innerHTML = (messageWin);
+    messageToUser.innerHTML = messageWin;
   } else if (condition1 > condition2) {
     messageToUser.innerHTML = messageHigh;
   } else {
@@ -42,22 +51,18 @@ function messagesGame(selector, condition1, condition2, messageWin, messageHigh,
 };
 
 //Función para actualizar el contador
-var attemps = document.querySelector('.attempts');
-
 function addAndPaint() {
   acumulador = acumulador + 1;
   attemps.innerHTML = acumulador;
-
 }
 
 //Función para que si el usuario acierta, aparezca la caja de escribe tu nombre
-function removeClass(selector, condition1, condition2, nameClass) {
+function removeClassInCase(selector, condition1, condition2, nameClass) {
   var elementSelector = document.querySelector(selector);
   if (condition1 === condition2) {
     elementSelector.classList.remove(nameClass);
   };
 }
-
 
 //Cuando el usuario pulsa el botón de guardar...
   //Guardamos el nombre y el número de intentos en un objeto
@@ -66,12 +71,9 @@ function removeClass(selector, condition1, condition2, nameClass) {
   //Genero un nuevo número aleatorio
   //Contador de intentos a 0
 
-var saveNameButtom = document.querySelector("#saveName-buttom");
-var historic = document.querySelector("#historic");
 saveNameButtom.addEventListener('click', operationsInputName);
 
 function operationsInputName() {
-  var inputUserName = document.querySelector("#input-user-name");
   var valueinputUserName = inputUserName.value; //Guardo el value del input
   var nameAndAttems =
   {
@@ -87,12 +89,10 @@ function operationsInputName() {
     return Math.ceil(Math.random() * (max - min)) + min;
   }
   numberRandom = newRandom(1,100);
-  console.log('Nuevo número aleatorio es ' + numberRandom); //Nuevo número aleatorio
 
   acumulador = 0;
   attemps.innerHTML = acumulador;   // Contador de intentos a 0
 
-  var messageToUser = document.querySelector('#message-to-user');
   messageToUser.innerHTML = '<p>Escribe un número y dale a <span class="italic">Prueba</span></p>'; //Vuelta a mensaje inicial
 
   inputUserName.value = '';

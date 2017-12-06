@@ -75,6 +75,7 @@ button:focus {
   color: blue;
   border: solid 1px blue;
   width: 80%;
+  height: 50px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;
