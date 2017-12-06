@@ -10,6 +10,8 @@ console.log(numberRandom);
 
 // var numberRandom = 50;  -- Borrar
 
+
+
 //Cuando el usuario pulsa el botón de Prueba...
   // Guardo el número que introduce
   // Comparo el número del usuario y el número aleatorio y lanzo mensajes
@@ -17,13 +19,18 @@ console.log(numberRandom);
 var tryButton = document.querySelector("#try-buttom");
 tryButton.addEventListener('click', ValueInput);
 
+
 function ValueInput() {
   var inputUserNumber = document.querySelector("#inputUserNumber");
   var valueinputUserNumberAsString = inputUserNumber.value;
   var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
   messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'¡Acertaste!', 'Demasiado alto', 'Demasiado bajo'); //hago comparaciones y pinto mensajes
+  addAndPaint(); // actualizar el contador
+
 }
 
+
+//Función para comparaciones entre aleatorio y el número del usuario y pinto mensaje
 function messagesGame(selector, condition1, condition2, messageWin, messageHigh, messageLow){
   var messageToUser = document.querySelector(selector);
   if (condition1 === condition2) {
@@ -34,6 +41,15 @@ function messagesGame(selector, condition1, condition2, messageWin, messageHigh,
     messageToUser.innerHTML = messageLow;
   }
 };
+
+//Función para actualizar el contador
+var attemps = document.querySelector('.attempts');
+var acumulador = 0;
+
+function addAndPaint() {
+  acumulador = acumulador + 1;
+  attemps.innerHTML = (acumulador);
+}
 
 
 /*
@@ -56,16 +72,17 @@ removeClass('#container-input-name', numberUser, numberRandom,'display-none');
 /*
 
 function saveAttemps() {
-  var attemps = document.querySelector('.attempts');
-  var acumulador = 0;
+
+
+
+
 
   tryButton.addEventListener("click",function(){
 
     var value = document.querySelector("#inputUserNumber").value;  // Aquí recojo el valor del input numberUser
     console.log(value);
 
-    acumulador = acumulador + 1;
-    attemps.innerHTML = (acumulador);
+
 
     //Guardar el número de intentos en la propiedad de un objeto)
 
