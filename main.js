@@ -5,22 +5,22 @@ var acumulador = 0;
 // Número aleatorio
 
 function getRandomInt(min, max) {
-return Math.ceil(Math.random() * (max - min)) + min;
+  return Math.ceil(Math.random() * (max - min)) + min;
 }
 var numberRandom = getRandomInt(1,100);
 console.log(numberRandom);
 
 
 //Cuando el usuario pulsa el botón de Prueba...
-  // Guardo el número que introduce
-  // Comparo el número del usuario y el número aleatorio y lanzo mensajes
-  // Actualizo el contador
-  //Si acierta, muestro el div con el botón de escribe tu nombre
+// Guardo el número que introduce
+// Comparo el número del usuario y el número aleatorio y lanzo mensajes
+// Actualizo el contador
+//Si acierta, muestro el div con el botón de escribe tu nombre
 
 var tryButton = document.querySelector("#try-buttom");
-tryButton.addEventListener('click', ValueInput);
+tryButton.addEventListener('click', operationsInputNumber);
 
-function ValueInput() {
+function operationsInputNumber() {
   var inputUserNumber = document.querySelector("#inputUserNumber");
   var valueinputUserNumberAsString = inputUserNumber.value;
   var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
@@ -60,22 +60,41 @@ function removeClass(selector, condition1, condition2, nameClass) {
 
 
 //Cuando el usuario pulsa el botón de guardar...
-  //Guardamos el nombre y el número de intentos en un objeto
-  //Pintamos el histórico con los datos del objeto
+//Guardamos el nombre y el número de intentos en un objeto
+//Pintamos el histórico con los datos del objeto
+//Desaparece la caja de escribe tu nombre
 
 var saveNameButtom = document.querySelector("#saveName-buttom");
 var historic = document.querySelector("#historic");
 
 
-saveNameButtom.addEventListener('click', fun);
+saveNameButtom.addEventListener('click', operationsInputName);
 
-function fun() {
+function operationsInputName() {
   var inputUserName = document.querySelector("#input-user-name");
   var valueinputUserName = inputUserName.value; //Guardo el value del input
-  var nameAndAttemps = {    //Guardo el nombre y el numero de intentos
+
+  var nameAndAttems =
+  {
     nameUser: valueinputUserName,
     attemps: acumulador
-    }
+  };
 
-  historic.innerHTML += '<li>' + nameAndAttemps.nameUser + ' - ' + nameAndAttemps.attemps + ' intentos' + '</li>'; //Pinto el histórico
+  var rounds = [
+    nameAndAttems
+  ];
+
+  for (var i = 0; i < rounds.length; i++) {
+    historic.innerHTML += '<li>' + rounds[0].nameUser + ' - ' + rounds[0].attemps + ' intentos' + '</li>'; //Pinto el histórico
+
+  }
+
+
+  addClass('#container-input-name','display-none'); //Desaparece la caja de escribe tu nombre
+};
+
+//Función para que desaparezca la caja de escribe tu nombre
+function addClass(selector, nameClass) {
+  var elementSelector = document.querySelector(selector);
+  elementSelector.classList.add(nameClass);
 };
