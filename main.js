@@ -1,5 +1,7 @@
 'use strict';
 
+var acumulador = 0;
+
 // Número aleatorio
 
 function getRandomInt(min, max) {
@@ -41,7 +43,6 @@ function messagesGame(selector, condition1, condition2, messageWin, messageHigh,
 
 //Función para actualizar el contador
 var attemps = document.querySelector('.attempts');
-var acumulador = 0;
 
 function addAndPaint() {
   acumulador = acumulador + 1;
@@ -60,46 +61,21 @@ function removeClass(selector, condition1, condition2, nameClass) {
 
 //Cuando el usuario pulsa el botón de guardar...
   //Guardamos el nombre y el número de intentos en un objeto
-
+  //Pintamos el histórico con los datos del objeto
 
 var saveNameButtom = document.querySelector("#saveName-buttom");
+var historic = document.querySelector("#historic");
+
 
 saveNameButtom.addEventListener('click', fun);
 
 function fun() {
   var inputUserName = document.querySelector("#input-user-name");
   var valueinputUserName = inputUserName.value; //Guardo el value del input
-  var nameAndAttemps = {
+  var nameAndAttemps = {    //Guardo el nombre y el numero de intentos
     nameUser: valueinputUserName,
     attemps: acumulador
     }
-  console.log(nameAndAttemps);
+
+  historic.innerHTML += '<li>' + nameAndAttemps.nameUser + ' - ' + nameAndAttemps.attemps + ' intentos' + '</li>'; //Pinto el histórico
 };
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-    // Que el histórico se pinte con el número de intentos cuando el usuario acierte
-
-    if (numberUser === numberRandom) { //Esto NO iría así, si no cuando el usuario pulse el Guardar.
-      var acumuladorDos = 0;
-      var listHistoric = document.querySelector('#historic');
-      listHistoric.innerHTML = '<li>' + historic.nameUser + ' - ' + acumuladorAttemps + ' intentos' + '</li>';
-    }
-
-  });
-};
-
-var contenidodelobjetoHistorico = saveAttemps();
-
-*/
