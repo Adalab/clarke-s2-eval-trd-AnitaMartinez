@@ -15,7 +15,7 @@ var acumulador = 0;
 // Número aleatorio
 
 function getRandomInt(min, max) {
-  return Math.ceil(Math.random() * (max - min)) + min;
+  return Math.ceil(Math.random() * (max - min +1)) + min;
 }
 var numberRandom = getRandomInt(1,100);
 
@@ -30,11 +30,8 @@ tryButton.addEventListener('click', operationsInputNumber);
 function operationsInputNumber() {
   var valueinputUserNumberAsString = inputUserNumber.value;
   var valueinputUserNumber = parseInt(valueinputUserNumberAsString); //Guardo el value del input
-
   messagesGame('#message-to-user', valueinputUserNumber, numberRandom,'<p>¡Acertaste!</p>', '<p>Demasiado alto</p>', '<p>Demasiado bajo</p>'); //hago comparaciones y pinto mensajes
-
   addAndPaint(); //actualizo el contador
-
   removeClassInCase('#container-input-name', valueinputUserNumber, numberRandom,'display-none'); //Si acierta, muesto la caja para guardar el nombre
 };
 
@@ -80,24 +77,14 @@ function operationsInputName() {
     nameUser: valueinputUserName,
     attemps: acumulador
   };
-
   historic.innerHTML += '<li>' + nameAndAttems.nameUser + ' - ' + nameAndAttems.attemps + ' intentos' + '</li>'; //Pinto el nombre y el número de intentos en el histórico
-
   addClass('#container-input-name','display-none'); //Desaparece la caja de escribe tu nombre
-
-  function newRandom (min, max) {
-    return Math.ceil(Math.random() * (max - min)) + min;
-  }
-  numberRandom = newRandom(1,100);
-
+  numberRandom = getRandomInt(1,100);
   acumulador = 0;
   attemps.innerHTML = acumulador;   // Contador de intentos a 0
-
   messageToUser.innerHTML = '<p>Escribe un número y dale a <span class="italic">Prueba</span></p>'; //Vuelta a mensaje inicial
-
   inputUserName.value = '';
   inputUserNumber.value = ''; //Reinicio de inputs
-
 };
 
 //Función para que desaparezca la caja de escribe tu nombre
